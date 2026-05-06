@@ -1,0 +1,333 @@
+//1
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class JunitExample{
+@Test
+public void test_Junit()
+{
+System.out.println("check the string");
+String str="check the string";
+assertEquals("check the string",str);
+}
+}
+
+//2
+
+public class MsgUnit {
+private String message;
+public MsgUnit (String message) {
+this.message = message;
+}
+//Prints the message
+public String printMessage() {
+System.out.println(message);
+return message;
+}
+}
+Create a Test class
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+public class Test unit {
+String message = "hello world";
+MsgUnit messageUtil = new MsgUnit (message) ;
+@Test
+public void testPrintMessage() {
+assertEquals(message, messageUtil.printMessage());
+}
+}
+
+//3
+
+public class Calculate {
+public int sum(int var1,int var2) {
+System.out.println("Adding values: " + var1 + "+" + var2);
+return var1+var2;
+}
+}
+Create a Test class
+package calTest;
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class CalculateTest {
+Calculate calculation = new Calculate();
+int sum = calculation.sum(10,5);
+int testSum = 15;
+@Test
+public void testSum() {
+System.out.println("@Test sum(): " + sum + " = " +testSum);
+assertEquals(sum, testSum);
+}
+}
+
+//4
+
+public class Calculator {
+public int add(int a, int b) {
+return a + b;
+}
+public int subtract(int a, int b) {
+return a - b;
+}
+public int multiply(int a, int b) {
+return a * b;
+}
+public int divide(int a, int b) {
+if (b == 0) {
+throw new IllegalArgumentException("Division by zero is not allowed.");
+}
+return a / b;
+}
+}
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class CalculatorTest {
+@Test
+public void testAddition() {
+Calculator calculator = new Calculator();
+assertEquals("Addition test failed", 5, calculator.add(2, 3));
+}
+@Test
+public void testSubtraction() {
+Calculator calculator = new Calculator();
+assertEquals("Subtraction test failed", 1, calculator.subtract(3, 2));
+}
+@Test
+public void testMultiplication() {
+Calculator calculator = new Calculator();
+assertEquals("Multiplication test failed", 6, calculator.multiply(2, 3));
+}
+@Test
+public void testDivision() {
+Calculator calculator = new Calculator();
+assertEquals("Division test failed", 2, calculator.divide(6, 3));
+}
+@Test(expected = IllegalArgumentException.class)
+public void testDivisionByZero() {
+Calculator calculator = new Calculator();
+calculator.divide(6, 0); // Should throw an exception
+}
+}
+
+//5
+
+public class evenNumber {
+public boolean isEven(int num) {
+if(num%2==0) {
+return true;
+}
+return false;
+}
+}
+Create JUnit 4 Test Cases
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class evenNumberTest {
+@Test
+public void testIsEven() {
+int sampleNo = 2;
+evenNumber numbereven = new evenNumber();
+assertTrue(numbereven.isEven(sampleNo));
+}
+@Test
+public void testIsEven_FalseCondition() {
+int sampleNo2 = 3;
+evenNumber numbereven = new evenNumber();
+assertFalse(numbereven.isEven(sampleNo2));
+}
+}
+
+//git 
+
+# 1. Install Git
+sudo apt update
+sudo apt install git -y
+
+# 2. Check Git version
+git --version
+
+# 3. Configure Git (first time only)
+git config --global user.name "YourName"
+git config --global user.email "youremail@example.com"
+
+# 4. Go to your project folder
+cd /path/to/your/project
+
+# Example:
+# cd ~/Desktop/myproject
+
+# 5. Initialize Git repository
+git init
+
+# 6. Check files
+ls
+
+# 7. Check Git status
+git status
+
+# 8. Add all files to staging area
+git add .
+
+# 9. Commit files
+git commit -m "Initial commit"
+
+# 11. Connect local repo to GitHub
+git remote add origin https://github.com/username/myrepo.git
+
+# 12. Verify remote
+git remote -v
+
+
+# If master does not work, use:
+git push -u origin main
+
+# 14. Check status again
+git status
+
+
+# 16. Clone existing repository
+git clone https://github.com/username/repository.git
+
+# 17. Pull latest changes
+git pull
+
+//ansible
+
+localhost ansible_connection=local
+---
+- name: Print Message Playbook
+  hosts: local
+
+  tasks:
+    - name: Print a message
+      debug:
+        msg: "Hello from Ansible"
+
+---
+- name: Install Nginx Playbook
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes 
+
+//Docker
+
+
+# 1. Update system
+sudo apt update
+
+# 2. Install Docker
+sudo apt install docker.io -y
+
+# 3. Check Docker version
+docker --version
+
+# 4. Start Docker service
+sudo systemctl start docker
+
+# 5. Enable Docker at boot
+sudo systemctl enable docker
+
+# 6. Check Docker status
+sudo systemctl status docker
+
+# 7. Run test container
+sudo docker run hello-world
+
+# 8. Pull Ubuntu image
+sudo docker pull ubuntu
+
+# 9. View downloaded images
+sudo docker images
+
+# 10. Run Ubuntu container interactively
+sudo docker run -it ubuntu
+
+# Inside container try:
+apt update
+exit
+
+# 11. View running containers
+sudo docker ps
+
+# 12. View all containers
+sudo docker ps -a
+
+# 13. Start a stopped container
+sudo docker start <container_id>
+
+# 14. Stop a running container
+sudo docker stop <container_id>
+
+# 15. Restart container
+sudo docker restart <container_id>
+
+# 16. Remove container
+sudo docker rm <container_id>
+
+# 17. Remove image
+sudo docker rmi <image_id>
+
+# 18. Run nginx container
+sudo docker run -d -p 8080:80 nginx
+
+# 19. Open nginx in browser
+# http://localhost:8080
+
+# 20. Check running containers
+sudo docker ps
+
+# 21. Enter running container
+sudo docker exec -it <container_id> bash
+
+# 22. Create a Dockerfile
+touch Dockerfile
+nano Dockerfile
+
+# Example Dockerfile:
+# -------------------
+# FROM ubuntu
+# RUN apt update
+# CMD ["echo","Hello Docker"]
+# -------------------
+
+# Save:
+# CTRL + X
+# Y
+# Enter
+
+# 23. Build Docker image
+sudo docker build -t myimage .
+
+# 24. Run custom image
+sudo docker run myimage
+
+# 25. Docker logs
+sudo docker logs <container_id>
+
+# 26. Docker system information
+sudo docker info
+
+# 27. Remove all stopped containers
+sudo docker container prune
+
+# 28. Remove unused images
+sudo docker image prune
+
+# 29. Logout from container
+exit
+
+
+
+
