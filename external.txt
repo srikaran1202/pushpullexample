@@ -220,7 +220,8 @@ localhost ansible_connection=local
         name: nginx
         state: started
         enabled: yes 
-
+systemctl status nginx
+sudo systemctl restart nginx
 //Docker
 
 
